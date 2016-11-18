@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class PingController {
 
     @RequestMapping("/ping")
-    public String index() {
+    public String ping() {
         return "pong";
     }
 
