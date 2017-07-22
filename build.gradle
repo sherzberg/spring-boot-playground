@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.4.RELEASE")
     }
 }
 
@@ -13,7 +13,7 @@ apply plugin: 'org.springframework.boot'
 
 jar {
     baseName = 'spring-boot-playground'
-    version =  '0.2.0'
+    version =  '0.3.0'
 }
 
 repositories {
