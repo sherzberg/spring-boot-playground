@@ -23,7 +23,7 @@ public class PingControllerTest {
 
     @Test
     public void getPing() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/ping"))
+        mvc.perform(MockMvcRequestBuilders.get("/ping").header("User-Agent", "test").header("Token", "asdf"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("pong")));
     }
