@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="elk" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <destination>localhost:4560</destination>
+
+        <!-- encoder is required -->
+        <!--<encoder class="net.logstash.logback.encoder.LogstashEncoder"/>-->
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <arguments/>
+                <mdc/>
+                <logLevel/>
+                <message/>
+                <stackTrace />
+            </providers>
+        </encoder>
+
+    </appender>
+
+    <root level="DEBUG">
+        <appender-ref ref="elk" />
+    </root>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+        <!--<encoder>-->
+            <!--<pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>-->
+        <!--</encoder>-->
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+</configuration>

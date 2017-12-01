@@ -26,9 +26,19 @@ public class MDCFilter extends OncePerRequestFilter {
                                     FilterChain filterChain)
             throws ServletException, IOException {
 
+        MDC.clear();
+
+        String userAgent = request.getHeader("User-Agent");
+
+        if (!StringUtils.isEmpty(userAgent)){
+            MDC.put("request_user_agent", userAgent);
+        }
+
         if (StringUtils.isEmpty(MDC.get(APP_CORRELATION_ID))) {
             MDC.put(APP_CORRELATION_ID, UUID.randomUUID().toString());
         }
+
+        MDC.put("system_platform", System.getProperty("os.name"));
 
         doFilter(request, response, filterChain);
     }
